@@ -1,0 +1,84 @@
+html {
+    background: #ff9998;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+  }
+  
+  .clock {
+    width: 30rem;
+    height: 30rem;
+    border: 7px solid #545271;
+    border-radius: 50%;
+    margin: 50px auto;
+    position: relative;
+    padding: 2rem;
+    -webkit-box-shadow: 0 20px 30px rgba(104,75,106,0.65);
+    -moz-box-shadow: 0 20px 30px rgba(104,75,106,0.65);
+    box-shadow: 0 20px 30px rgba(104,75,106,0.65);
+    background: #545271;
+  }
+  
+  .inner-clock-face {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #fefefc;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    z-index: 1;
+  }
+  
+  .inner-clock-face::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 18px;
+    margin-left: -9px;
+    margin-top: -6px;
+    background: #4d4b63;
+    z-index: 11;
+  }
+  
+  .hand {
+    width: 50%;
+    right: 50%;
+    height: 6px;
+    background: #61afff;
+    position: absolute;
+    top: 50%;
+    border-radius: 6px;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  }
+  
+  .hand.hour-hand {
+    width: 20%;
+    z-index: 3;
+  }
+  
+  .hand.minute-hand {
+    height: 3px;
+    z-index: 10;
+    width: 35%;
+  }
+  
+  .hand.second-hand {
+    background: #ff5e5e;
+    width: 40%;
+  }
