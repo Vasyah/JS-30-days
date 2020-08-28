@@ -1,0 +1,6 @@
+# Вспомогательные файлы
+*.log*
+node_modules/
+reports/
+
+
