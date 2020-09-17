@@ -22,91 +22,37 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
-const inventorsFilter = inventors.filter(item => item['year'] > 1500 && item['year'] < 1600);
-console.log(inventorsFilter);
+
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
 // метод .map всегда возвращает столько элементов в новый массив, сколько получил на вход
 
-const inventorsNames = inventors.map((item) => {
-    return {
-        first: item['first'],
-        last: item['last'],
-    }
-});
 /* не разобрался, почему не работает this
 TODO: */
-console.log(inventorsNames);
+
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 
 // сортировка
-const arr = [1, 3, 5, -1, 10, 44];
 
-console.log(arr.sort((a, b) => a - b));
 
-let sortedBirthday = inventors.sort((a, b) => {
-    if (a.year < b.year) return -1;
-    else if (a.year > b.year) return 1;
-    return 0;
-
-});
-
-console.log(sortedBirthday);
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
-let sumAllYears = inventors.reduce((previousVal, currVal) => {
-    let yearsLive = currVal.passed - currVal.year;
-    console.log(currVal['first'] + ' ' + currVal['last'] + ' прожил: ' + yearsLive);
-    return previousVal += currVal.passed - currVal.year;
-}, 0);
 
-console.log(sumAllYears);
 
 // 5. Sort the inventors by years lived
 
-let sortByYearsLived = inventors.sort((a, b) => {
-    let aYearsLive = a.passed - a.year;
-    let bYearsLive = b.passed - b.year;
-    console.log('a: ' + aYearsLive + '\n' + 'b: ' + bYearsLive);
-    if (aYearsLive < bYearsLive) {
-        return -1;
-    }
-    else if (aYearsLive > bYearsLive) {
-        return 1;
-    }
-    return 0;
-});
-
-console.log(sortByYearsLived);
+// можно не делать
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
-let newPeople = people.sort();
-console.log(newPeople);
+
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
 
-const testObj = {
-    key: 15,
-};
-
-const fifteen = 15;
-
-console.log(testObj.hasOwnProperty('key'));
-
-
-let newData = data.reduce(function (obj, item) {
-    if( !obj[item]){
-        obj[item] = 0;
-    }
-    obj[item]++;
-    return obj;
-}, {});
-console.log((newData));
