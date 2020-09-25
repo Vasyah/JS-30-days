@@ -1,0 +1,47 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (max-width: 960px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.chkbx-wrapper {
+  max-width: 400px;
+  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #baac551a;
+  box-shadow: 0px 0px 10px;
+  padding: 15px;
+}
+
+.chkbx {
+  display: flex;
+  align-items: stretch;
+}
+.chkbx input {
+  display: block;
+}
+.chkbx div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+.chkbx p {
+  flex: 3;
+}
+.chkbx div, .chkbx p {
+  padding: 15px;
+  border: 2px solid #ddc31c;
+}
+
+/*# sourceMappingURL=/styles.434540e1.css.map */
