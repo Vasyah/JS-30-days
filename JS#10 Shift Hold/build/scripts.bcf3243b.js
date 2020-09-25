@@ -118,58 +118,35 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"scripts/index.js":[function(require,module,exports) {
-var inputs = document.querySelectorAll(".chkbx input[type='checkbox']");
+// get all inputs
+var inputs = document.querySelectorAll('.chkbx__item'); // listen click events for inputs
+
+inputs.forEach(function (input) {
+  input.addEventListener('click', shiftCheck);
+});
 var lastInput;
 
-function displayCurrent(e) {
+function shiftCheck(e) {
   var _this = this;
 
-  // должны зафиксировать нажатие на текущий инпут
-  // если мы нажали клавишу шифт и текущее событие - переводит
-  // чекбокс в cheked
-  var inBetween = false;
-  console.log(inBetween); // Нажат ли шифт и отмечен ли чекбокс
-
+  // check shift & checked of input
   if (e.shiftKey && this.checked) {
-    // 
+    // inBetween flag
+    var inBetween = false; // check input if it's inBetween is true 
+
     inputs.forEach(function (input) {
-      // определяем элементы между двумя выделенными инпутами
       if (input === _this || input === lastInput) {
-        // флаг того, что мы смотрим элементы между ключевыми
-        // инпутами, как только определяем ключевой
-        // то снимаем флаг
         inBetween = !inBetween;
-        console.log(inBetween);
       }
 
       if (inBetween) {
         input.checked = true;
       }
     });
-  } else if (e.shiftKey && !this.checked) {
-    // 
-    inputs.forEach(function (input) {
-      // определяем элементы между двумя выделенными инпутами
-      if (input === _this || input === lastInput) {
-        // флаг того, что мы смотрим элементы между ключевыми
-        // инпутами, как только определяем ключевой
-        // то снимаем флаг
-        inBetween = !inBetween;
-        console.log(inBetween);
-      }
-
-      if (inBetween) {
-        input.checked = false;
-      }
-    });
   }
 
   lastInput = this;
 }
-
-inputs.forEach(function (input) {
-  input.addEventListener('click', displayCurrent);
-});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -198,7 +175,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32785" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37983" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
