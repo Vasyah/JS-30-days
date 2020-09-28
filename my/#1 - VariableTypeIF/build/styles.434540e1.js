@@ -117,142 +117,79 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"scripts/index.js":[function(require,module,exports) {
-// Get your shorts on - this is an array workout!
-// ## Array Cardio Day 1
-// Some data we can work with
-var inventors = [{
-  first: 'Albert',
-  last: 'Einstein',
-  year: 1879,
-  passed: 1955
-}, {
-  first: 'Isaac',
-  last: 'Newton',
-  year: 1643,
-  passed: 1727
-}, {
-  first: 'Galileo',
-  last: 'Galilei',
-  year: 1564,
-  passed: 1642
-}, {
-  first: 'Marie',
-  last: 'Curie',
-  year: 1867,
-  passed: 1934
-}, {
-  first: 'Johannes',
-  last: 'Kepler',
-  year: 1571,
-  passed: 1630
-}, {
-  first: 'Nicolaus',
-  last: 'Copernicus',
-  year: 1473,
-  passed: 1543
-}, {
-  first: 'Max',
-  last: 'Planck',
-  year: 1858,
-  passed: 1947
-}, {
-  first: 'Katherine',
-  last: 'Blodgett',
-  year: 1898,
-  passed: 1979
-}, {
-  first: 'Ada',
-  last: 'Lovelace',
-  year: 1815,
-  passed: 1852
-}, {
-  first: 'Sarah E.',
-  last: 'Goode',
-  year: 1855,
-  passed: 1905
-}, {
-  first: 'Lise',
-  last: 'Meitner',
-  year: 1878,
-  passed: 1968
-}, {
-  first: 'Hanna',
-  last: 'Hammarström',
-  year: 1829,
-  passed: 1909
-}];
-var people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William']; // Array.prototype.filter()
-// 1. Filter the list of inventors for those who were born in the 1500's
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-var arr = [];
-
-for (var i = 0; i < arr.length; i++) {
-  ;
-}
-
-var fiveHundredths = inventors.forEach(function (inventor) {
-  if (inventor.year > 1499 || inventor.year < 1599) {
-    arr.push(inventor.first + ' ' + inventor.last);
-  }
-});
-var fiveHundredths1 = inventors.filter();
-console.log(arr); // Array.prototype.map()
-// 2. Give us an array of the inventors first and last names
-// метод .map всегда возвращает столько элементов в новый массив, сколько получил на вход
-// здесь мы возвращаем массив, в котором каждый объект содержим имя и фамилию
-
-var mapWithInventors = inventors.map(function (inventor) {
-  return "".concat(inventor.first, " ").concat(inventor.last);
-});
-console.log(mapWithInventors); // Array.prototype.sort()
-// 3. Sort the inventors by birthdate, oldest to youngest
-
-var sortInventors = inventors.sort(function (a, b) {
-  return b.year - a.year;
-});
-console.log(sortInventors); // сортировка
-// Array.prototype.reduce()
-// 4. How many years did all the inventors live all together?
-
-var preVal = 0;
-
-for (var _i = 0; _i < inventors.length; _i++) {
-  preVal = inventors[_i].passed - inventors[_i].year;
-}
-
-console.log(preVal);
-var reduceInventors = inventors.reduce(function (prevValue, inventor) {
-  return prevValue + (inventor.passed - inventor.year);
-}, 0);
-console.log(reduceInventors); // 5. Sort the inventors by years lived
-
-var sortInventors11 = inventors.reduce(function (yearsArr, inventor) {
-  yearsArr.push(inventor.passed - inventor.year);
-  return yearsArr.sort(function (a, b) {
-    return a > b ? 1 : -1;
-  });
-}, []);
-console.log(sortInventors11); // можно не делать
-// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-// 7. sort Exercise
-// Sort the people alphabetically by last name
-// 8. Reduce Exercise
-// Sum up the instances of each of these
-
-var data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
-var newData = data.reduce(function (newObj, item) {
-  if (newObj[item] == null) {
-    newObj[item] = 1;
-  } else {
-    newObj[item] += 1;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
 
-  return newObj;
-}, {});
-console.log(newData);
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/index.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -280,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55013" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60658" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -456,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/index.js"], null)
-//# sourceMappingURL=/scripts.bcf3243b.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/styles.434540e1.js.map

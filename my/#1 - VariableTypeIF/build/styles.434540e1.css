@@ -1,0 +1,11 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (max-width: 960px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+/*# sourceMappingURL=/styles.434540e1.css.map */
