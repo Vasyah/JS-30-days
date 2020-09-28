@@ -1,0 +1,11 @@
+@import 'container.scss';
+
+
+.cart{
+    display: flex;
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+    }
+}
