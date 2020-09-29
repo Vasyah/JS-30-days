@@ -81,5 +81,4 @@ console.log(arwFnc());
 // https://tproger.ru/translations/wtf-is-ecmascript/
 
 // контекст this - когда объекты
-// смотрю на время, если больше 1:30, то завершаю, если нет, то определяем функции для нашей корзины
 
