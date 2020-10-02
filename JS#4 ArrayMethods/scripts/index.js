@@ -90,7 +90,7 @@ const fiveHundredths = inventors.forEach(function(inventor) {
     }
 });
 
-const fiveHundredths1 = inventors.filter()
+// const fiveHundredths1 = inventors.filter()
 
 
 
@@ -145,17 +145,41 @@ console.log(sortInventors11);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
-const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
-
+const data = ['171', '447', '341', '428', '374', '208', '583', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '318', '158', '211', '211', '320', '320', '30', '181', '181', '181', '195', '379', '354', '191', '11', '11', '175', '175', '175', '175', '175', '175', '175', '152', '378', '346', '77', '77', '8', '8', '8', '400', '400', '562', '562', '562' , '12', '459', '459', '459', '459', '274', '36', '325', '466', '269', '269', '269', '269', '269', '8', '10', '10'];
+let counter = 0;
 const newData = data.reduce((newObj, item) =>{
+
     if(newObj[item] == null){
         newObj[item] = 1;
     }
     else{
         newObj[item] += 1;
     }
+    counter++;
     return newObj;
 }, {});
 
 
 console.log(newData);
+
+
+console.log(counter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
