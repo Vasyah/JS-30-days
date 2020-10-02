@@ -1,0 +1,7 @@
+// func declaration
+
+// func expression
+
+// errors, debug
+
+// arrow func
