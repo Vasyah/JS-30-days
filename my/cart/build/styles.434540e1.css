@@ -14,7 +14,7 @@
 .card__item {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 50px;
   flex: 1;
 }
 .card__img {

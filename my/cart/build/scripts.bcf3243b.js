@@ -126,17 +126,28 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // самые частые события
 // click
 // mousemove
-// addToCart
+var cart = {
+  items: {},
+  loadItems: function loadItems(items) {
+    var _this = this;
+
+    items.reduce(function (prev, item) {
+      _this.items["item".concat(item.dataset.id)] = {};
+    }, {});
+  }
+}; // addToCart
 // добавить текущий товар в корзину
+
 var d = document;
 var cartTotaSumm = d.querySelector('.cart__totalSumm');
-var cards = d.querySelectorAll('card');
-console.log(cards);
+var cards = d.querySelectorAll('.card__item');
 
 function addToCart() {
   console.log(cartTotaSumm.value++);
 }
 
+cart.loadItems(cards);
+console.log(cart);
 var btnAdd = d.querySelectorAll('.btn-add');
 btnAdd.forEach(function (btn) {
   return btn.addEventListener('click', addToCart);
@@ -181,7 +192,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44821" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58168" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

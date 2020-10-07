@@ -7,17 +7,24 @@
 // самые частые события
 // click
 // mousemove
-
+let cart = {
+    items: {},
+    loadItems(items){
+        items.reduce((prev,item) => {
+            this.items[`item${item.dataset.id}`]= {};
+        },{});
+    },
+};
 // addToCart
 // добавить текущий товар в корзину
 let d = document;
 let cartTotaSumm = d.querySelector('.cart__totalSumm');
-let cards = d.querySelectorAll('card');
-console.log(cards);
+let cards = d.querySelectorAll('.card__item');
 function addToCart() {
     console.log(cartTotaSumm.value++);
 }
-
+cart.loadItems(cards);
+console.log(cart);
 let btnAdd = d.querySelectorAll('.btn-add');
 
 btnAdd.forEach(btn => btn.addEventListener('click', addToCart));
