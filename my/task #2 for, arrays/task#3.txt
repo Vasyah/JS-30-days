@@ -1,0 +1,34 @@
+// Циклы
+
+// Задание на 05.10.2020
+
+// 1 - Используя функции выполнить задания с 1-4 (из предыдущего задания)
+// в качестве входного аргумента использовать массив,
+// содержащий 100 элементов (от 1 до 100)
+// ОБЯЗАТЕЛЬНО
+// 2 - выполнить часть задания, с использованием методов массива!
+// скачать visual code studio
+
+function fillArrWithNum(maxVal) {
+    let arr = [];
+    for (let i = 1; i <= maxVal; i++) {
+        arr.push(i);
+    }
+    return arr;
+}
+
+let numArr = fillArrWithNum(100);
+// Все задания выполнить, сперва с for, затем while/do while (по желанию)
+// 1)Выведите столбец чисел от 1 до 100.
+
+function showAllElmsWithFor(arr) {
+    let div = document.createElement('div');
+    for (let i = 0; i < arr.length; i++) {
+        div.textContent += `${arr[i]} `;
+    }
+    div.style.marginTop = '20px';
+    document.body.append(div);
+    // обычное решение, красоты
+}
+
+showAllElmsWithFor(numArr);

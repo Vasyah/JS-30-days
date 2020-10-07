@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+=======
+@import 'container.scss';
+
+
+.card{
+    display: flex;
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        flex:1
+    }
+    &__img{
+        max-width: 100%;
+    }
+    
+}
+
+.cart{
+    margin-top: 20px;
+    
+    &__totalSumm{
+        background-color: #fff;
+        outline: none;
+        border: none;
+        min-width: none;
+    }
+}
+>>>>>>> e568cbe5856ec6c1c060c5bc75d772b27c2f9454

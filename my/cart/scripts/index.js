@@ -3,10 +3,24 @@
 // Затем используя объект
 
 // functions list
+// Познакомимся с обработчиком событий
+// самые частые события
+// click
+// mousemove
 
 // addToCart
 // добавить текущий товар в корзину
+let d = document;
+let cartTotaSumm = d.querySelector('.cart__totalSumm');
+let cards = d.querySelectorAll('card');
+console.log(cards);
+function addToCart() {
+    console.log(cartTotaSumm.value++);
+}
 
+let btnAdd = d.querySelectorAll('.btn-add');
+
+btnAdd.forEach(btn => btn.addEventListener('click', addToCart));
 // delFromCart
 // удалить выбранный товар из корзины
 

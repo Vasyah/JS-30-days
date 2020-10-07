@@ -195,8 +195,8 @@ var fiveHundredths = inventors.forEach(function (inventor) {
   if (inventor.year > 1499 || inventor.year < 1599) {
     arr.push(inventor.first + ' ' + inventor.last);
   }
-});
-var fiveHundredths1 = inventors.filter();
+}); // const fiveHundredths1 = inventors.filter()
+
 console.log(arr); // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
 // метод .map всегда возвращает столько элементов в новый массив, сколько получил на вход
@@ -241,7 +241,8 @@ console.log(sortInventors11); // можно не делать
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 
-var data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+var data = ['171', '447', '341', '428', '374', '208', '583', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '268', '318', '158', '211', '211', '320', '320', '30', '181', '181', '181', '195', '379', '354', '191', '11', '11', '175', '175', '175', '175', '175', '175', '175', '152', '378', '346', '77', '77', '8', '8', '8', '400', '400', '562', '562', '562', '12', '459', '459', '459', '459', '274', '36', '325', '466', '269', '269', '269', '269', '269', '8', '10', '10'];
+var counter = 0;
 var newData = data.reduce(function (newObj, item) {
   if (newObj[item] == null) {
     newObj[item] = 1;
@@ -249,9 +250,11 @@ var newData = data.reduce(function (newObj, item) {
     newObj[item] += 1;
   }
 
+  counter++;
   return newObj;
 }, {});
 console.log(newData);
+console.log(counter);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -280,7 +283,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55013" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39115" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

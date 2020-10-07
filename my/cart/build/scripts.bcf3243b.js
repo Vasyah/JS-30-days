@@ -122,9 +122,25 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // Затем добавим DOM
 // Затем используя объект
 // functions list
+// Познакомимся с обработчиком событий
+// самые частые события
+// click
+// mousemove
 // addToCart
 // добавить текущий товар в корзину
-// delFromCart
+var d = document;
+var cartTotaSumm = d.querySelector('.cart__totalSumm');
+var cards = d.querySelectorAll('card');
+console.log(cards);
+
+function addToCart() {
+  console.log(cartTotaSumm.value++);
+}
+
+var btnAdd = d.querySelectorAll('.btn-add');
+btnAdd.forEach(function (btn) {
+  return btn.addEventListener('click', addToCart);
+}); // delFromCart
 // удалить выбранный товар из корзины
 // delAllFromCart
 // удалить все товары из корзины
@@ -165,7 +181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51560" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44821" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

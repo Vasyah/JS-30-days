@@ -8,12 +8,27 @@
   }
 }
 
-.cart {
+.card {
   display: flex;
 }
-.cart__item {
+.card__item {
   display: flex;
   flex-direction: column;
+  padding: 25px;
+  flex: 1;
+}
+.card__img {
+  max-width: 100%;
+}
+
+.cart {
+  margin-top: 20px;
+}
+.cart__totalSumm {
+  background-color: #fff;
+  outline: none;
+  border: none;
+  min-width: none;
 }
 
 /*# sourceMappingURL=/styles.434540e1.css.map */
