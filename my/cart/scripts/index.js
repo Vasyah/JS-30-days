@@ -12,64 +12,61 @@
 // addToCart
 // добавить текущий товар в корзину
 // cart - имитация объекта корзины
+
+// Статья по объектам - https://learn.javascript.ru/object
+
 let user = {
-    name: 'Vasya',
-    age: '27',
-    city: 'NSK',
-    sex: 'male',
+    'name': 'Vasya',
+    'age': '27',
+    'sex': 'male',
+    'city': 'NSK',
 };
-// записываем объект со свойствами
-// получение значение через ключ
+
+
+console.log(user);
+// обращение к св-ву
+// обращение к св-ву
+let nameUser = 'name';
 console.log(user.name);
-console.log(user.age);
-// изменение ключа
-user.age = '40';
-console.log(user.age);
-let mainUser = user;
-console.log(mainUser);
-user.age = '45';
-console.log(mainUser);
+console.log(user[nameUser]);
+// записываем объект со свойствами
+
+// получение значение через ключ
+user.height = '183';
+console.log(user);
+
+user["width"] = '11';
+console.log(user);
+
+
+delete user.width;
+delete user.height;
+console.log(user);
+
 // перебор массива
-let arr = ['bitch', 'ditch', 'rich'];
-// перебор строки
-let str = 'qwertyuiop[]'
-for(let key  in  user){
-    console.log(user);
-}
-let cart = {
-};
-let productName_1 = 'prod_1' ;
-let productName_2 = 'prod_2';
-
-let productPrice_1 = '450';
-let productPrice_2 = '900';
-
-function addToCart(product, price){
-    cart[product] = price;
-    console.log(cart);
+// for in
+for(let property in user){
+    console.log(`${property}: ${user[property]}`);
 }
 
-addToCart(productName_1, productPrice_1);
-addToCart(productName_2, productPrice_2);
-// 
-// delFromCart
-// удалить выбранный товар из корзины
+let arr = ['bird', 'ditch', 'rich', 'storm'];
 
-// delAllFromCart
-// удалить все товары из корзины
+for(let item in arr){
+    console.log(`${item}: ${arr[item]}`);
+}
 
-// updCart
-// изменить количество товара в корзине
+let str = 'qwertyuiop';
 
+for(let item in str){
+    console.log(`${item}: ${str[item]}`);
+}
 
-// toggleCart
-// в зависимости от условий -> openCart/closeCart
-// openCart
-// открыть корзину
-// в зависимости от условий -> showAllInCart
+//  for of
+//(TODO:) узнать, как перебрать значения свойств объекта через for of
+for(let prop of arr){
+    console.log(prop);
+}
 
-// closeCart
-// закрыть корзину
 
 
 // let cart = {

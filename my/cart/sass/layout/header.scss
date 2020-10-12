@@ -1,0 +1,48 @@
+.header {
+  position: relative;
+  color: #fff;
+  height: 60vh;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(#000, .25);
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+}
+
+.section__uptitle {
+  text-transform: uppercase;
+  @include fFS(18px, 20px, 320px, 1400px);
+}
+
+.section__header {
+  @include fFS(40px, 78px, 320px, 1400px);
+  .mounth {
+    @include stripes;
+    font-weight: 700;
+  }
+}
+
+.section__title {
+  @include fFS(30px, 42px, 320px, 1400px);
+}
+
+.section__descr {
+  @include fFS(18px, 24px, 320px, 1400px);
+}

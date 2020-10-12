@@ -1,0 +1,97 @@
+html {
+ font-family: $ff;
+ color: $text;
+ font-size: $fz;
+}
+
+body {
+ display: flex;
+ flex-direction: column;
+ font-weight: 300;
+}
+
+.wrapper {
+ position: relative;
+ min-width: 320px;
+ min-height: 100vh;
+ flex-grow: 1;
+ overflow: hidden;
+}
+
+.footer {
+ flex-grow: 0;
+}
+
+a {
+ display: inline-block;
+ vertical-align: middle;
+}
+
+.container {
+ //position: relative;
+ max-width: $container;
+ margin: 0 auto;
+ padding: 0 20px;
+}
+
+.section {
+ padding: 5% 0;
+ text-align: center;
+ @include bp(700px) {
+  padding: 10% 0;
+ }
+}
+
+/*grid*/
+
+.col-4 {
+ max-width: 25%;
+ flex-basis: 25%;
+}
+
+.col-3 {
+ max-width: 33.33333%;
+ flex-basis: 33.3333%;
+}
+
+.col-2 {
+ max-width: 50%;
+ flex-basis: 50%;
+}
+
+[class*="col"] {
+ padding: 0 10px;
+ @include bp(900px) {
+  max-width: 50%;
+  flex-basis: 50%;
+ }
+ @include bp(600px) {
+  max-width: 100%;
+  flex-basis: 100%;
+ }
+}
+
+.scroll-down {
+ position: absolute;
+ left: 50%;
+ bottom: 8%;
+ width: 30px;
+ height: 30px;
+ margin: auto;
+ border-bottom: 2px solid;
+ border-right: 2px solid;
+ transform:translateX(-50%) rotate(45deg);
+ animation: fly 3s ease-in-out infinite;
+ @include bp(600px) {
+  bottom: 2%;
+ }
+}
+
+@keyframes fly {
+ 0%,100% {
+  bottom: 8%;
+ }
+ 50% {
+  bottom: 3%;
+ }
+}
