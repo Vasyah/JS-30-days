@@ -1,30 +1,22 @@
-// ПРОЕКТ КОРЗИНА (НЕ ПОМОЙНАЯ)
-// addToCart
-let productName_1 = 'YogaCarpet1';
-let productName_2 = 'YogaCarpet2';
+// let cart = {
+//     items: {},
+//     addToCart(item){
+//         if(this.hasOwnProperty(this.currentItem[item])){
+//             this.currentItem[item]['quantity'] += 1;
+//         }
+//         else{
+//             this.currentItem[item] = 1;
+//         }
+//     }
+// }
 
-let productPrice_1 = '2500';
-let productPrice_2 = '30000';
+// let items = {
+//     'id-1': {
+//         price: '450',
+//     },
+//     'id-2': {
+//         price: '450',
+//     },
+// }
 
-let cart = {};
-function addToCart(product, price){
-    cart[product] = price;
-}
-
-addToCart(productName_1, productPrice_1);
-addToCart(productName_2, productPrice_2);
-
-console.log(cart);
-
-for(let prod in cart){
-    console.log(`${prod}: ${cart[prod]}`);
-}
-// rmwFromCart
-// удалить выбранный товар из корзины
-function rmwFromCart(product){
-    delete cart[product];
-}
-
-rmwFromCart('YogaCarpet1');
-rmwFromCart('YogaCarpet2');
-console.log(cart);
+// console.log(items);
