@@ -2,26 +2,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/main.07544d9b.css">
   <title>Document</title>
-</head>
+<script src="/main.07544d9b.js"></script></head>
 <body>
   <div class="container">
     <div class="products">
-      <div class="products__item product">
+      <!-- first item -->
+      <div class="products__item product" data-id="id1" data-price="450">
         <div class="product__title">Название товара</div>
         <div class="product__img-wrapper">
-          <img src="" alt="Изображение товара" class="product__img">
+          <img src="/emodji_1.f8b19147.png" alt="Изображение товара" class="product__img">
         </div>
         <div class="product__description">Здесь описание товара</div>
-        <div class="product__price price"><span class="price__main"></span><span class="price__minor"></span><span class="price__currency"></span></div>
+        <div class="product__price price">Цена: <span class="price__main">450</span><span class="price__minor"></span><span class="price__currency"> RUB</span></div>
         <div class="product__id">арктикул товара:</div>
         <div class="product__btns">
-          <button class="product__add">ADD</button>
+          <button class="product__btn product__btn--plus">+</button>
+          <input class="product__count" value="0">
+          <button class="product__btn product__btn--minus">-</button>
         </div>
       </div>
-    </div>
+      <!-- next item -->
+      <div class="products__item product" data-id="id2" data-price="450">
+        <div class="product__title">Название товара</div>
+        <div class="product__img-wrapper">
+          <img src="/emodji_1.f8b19147.png" alt="Изображение товара" class="product__img">
+        </div>
+        <div class="product__description">Здесь описание товара</div>
+        <div class="product__price price">Цена: <span class="price__main">450</span><span class="price__minor"></span><span class="price__currency"> RUB</span></div>
+        <div class="product__id">арктикул товара:</div>
+        <div class="product__btns">
+          <button class="product__btn product__btn--plus">+</button>
+          <input class="product__count" value="0">
+          <button class="product__btn product__btn--minus">-</button>
+        </div>
+      </div>
+      <div class="clear"><button class="products__btn--clear">Clear Cart</button></div>
+      <div class="open"><button class="products__btn--open"></button></div>
   </div>
 
   <script src="/cart.8a7a0a92.js"></script>
-</body>
+</div></body>
 </html>
