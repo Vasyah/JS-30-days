@@ -117,79 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"scripts/cart_new.js":[function(require,module,exports) {
+// 'use strict'
+var cart = {};
+var d = document;
+var products = d.querySelector('.products'); // console.dir(products);
+// addCart - добавить товар в корзину
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+function addCart(id, price) {
+  if (!cart.hasOwnProperty(id)) {
+    cart[id] = {};
+    cart[id]['price'] = +price;
+    cart[id]['count'] = 1;
+    cart[id]['totalPrice'] = cart[id]['count'] * cart[id]['price'];
+    console.log(cart);
+  } else {
+    cart[id]['count'] += 1;
+    cart[id]['totalPrice'] = cart[id]['count'] * cart[id]['price'];
+    console.log(cart);
   }
+} // delCart - удалить товар из корзины
 
-  return bundleURL;
-}
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
+function delCart(id) {
+  if (cart.hasOwnProperty(id)) {
+    if (cart[id]['count'] - 1 <= 0) {
+      delete cart[id];
+      return;
     }
-  }
 
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
+    cart[id]['count'] -= 1;
+    cart[id]['totalPrice'] = cart[id]['count'] * cart[id]['price'];
+    console.log(cart);
+  } else {
     return;
   }
+} // delAllCart - удалить все товары из корзины
+// openCart  - показать содержимое корзины
 
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
 
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
+var btns = d.querySelectorAll('.product__btn'); // Вешаем события на все кнопки
+// btns.forEach(btn => btn.addEventListener('click', (e) => {
+//     let isClass = e.target.classList;
+//     if (isClass.contains('product__btn--plus')) {
+//         console.log(e.target);
+//     } else if (isClass.contains('product__btn--minus')) {
+//         console.log(e.target);
+//     }; 
+// }));
 
-    cssTimeout = null;
-  }, 50);
-}
+products.addEventListener('click', function (e) {
+  var isClass = e.target.classList;
+  var dataset = e.target.dataset;
 
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"sass/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
+  if (isClass.contains('product__btn--plus')) {
+    addCart(dataset.id, dataset.price);
+  } else if (isClass.contains('product__btn--minus')) {
+    delCart(dataset.id);
+  }
 
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\img\\shopping-cart.svg":[["shopping-cart.293e2283.svg","img/shopping-cart.svg"],"img/shopping-cart.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  ;
+}); // ДЛЯ ДЗ
+// querySelector, querySelectorAll
+// document.
+// .onClick (посмотреть события)
+// .addEventListner (чем он лучше .onClick)
+// callback функция
+// выяснить, шо це таке, из-за чего корзина считает коряво
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +388,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.07544d9b.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/cart_new.js"], null)
+//# sourceMappingURL=/cart_new.ef47d56e.js.map
