@@ -1,72 +1,72 @@
-'use strict'
-let cart = {}
+// 'use strict'
 
-// let d = document;
-// const products = d.querySelector('.products');
-// const productsInputs = d.querySelectorAll('.product__count');
-// // добавить в корзину
-// function addCart(id, price) {
-//     // лежит ли уже в корзине
-//     if (cart.hasOwnProperty(id)) {
-//         cart[id].count += 1;
-//         cart[id]['totalPrice'] = cart[id]['count'] * cart[id]['price'];
-//     }
-//     // если не лежит
-//     else {
-//         cart[id] = {};
-//         cart[id].count = 1;
-//         cart[id]['price'] = +price;
-//         cart[id]['totalPrice'] = cart[id]['count'] * cart[id]['price'];
-//     }
-//     console.log(cart);
-// };
+let cart = {};
 
-// // удалить из корзины
-// function delCart(id) {
-//     // если не осталось товара в корзине, удалить из объекта
-//     if (cart.hasOwnProperty(id)) {
-//         if (cart[id]['count'] - 1 === 0) {
-//             delete cart[id];
-//             console.log(cart);
-//             return;
-//         }
-//         cart[id].count -= 1;
-//         cart[id]['totalPrice'] = cart[id]['count'] * cart[id]['price'];
-//     }
-//     // если не лежит
-//     else {
-//         console.log(cart);
-//         return;
-//     }
-//     console.log(cart);
-// };
+let d = document;
 
-// function delAllCart() {
-//     for (let item in cart) {
-//         delete cart[item];
-//     }
-//     console.log(cart);
-// }
+let products = d.querySelector('.products');
 
-// function changeCount(e, id) {
-//     if (!cart.hasOwnProperty(id)) return;
-//     e.target.parentNode.children[1].value = cart[e.path[2].dataset.id]['count'];
-// }
+// console.dir(products);
 
+// addCart - добавить товар в корзину
+function addCart(id, price){
+    if(!cart.hasOwnProperty(id)){
+        cart[id] = {};
+        cart[id]['price'] = +price;
+        cart[id]['count'] = 1;
+        cart[id]['totalPrice'] =  cart[id]['count']*cart[id]['price'];
+        console.log(cart);
+    }
+    else{
+        cart[id]['count'] += 1;
+        cart[id]['totalPrice'] =  cart[id]['count']*cart[id]['price'];
+        console.log(cart);
+    }
+}
+// delCart - удалить товар из корзины
+function delCart(id){
+    if(cart.hasOwnProperty(id)){
+        if(cart[id]['count'] - 1 <= 0){
+            delete cart[id]
+            return;
+        }
+        cart[id]['count'] -= 1;
+        cart[id]['totalPrice'] =  cart[id]['count']*cart[id]['price'];
+        console.log(cart);
+    }
+    else{
+        return;
+    }
+}
+// delAllCart - удалить все товары из корзины
 
-// products.addEventListener('click', e => {
-//     // нажата кнопка "+" ?
-//     if (e.target.classList.contains('product__btn--plus')) {
-//         addCart(e.path[2].dataset.id, e.path[2].dataset.price);
-//         changeCount(e, e.path[2].dataset.id);
-//     }
-//     // нажата кнопка "-" ?
-//     else if (e.target.classList.contains('product__btn--minus')) {
-//         delCart(e.path[2].dataset.id);
-//         changeCount(e, e.path[2].dataset.id);
-//     } 
-//     else if (e.target.classList.contains('products__btn--clear')) {
-//         delAllCart();
-//         productsInputs.forEach( i => i.value = 0);
-//     }
-// });
+// openCart  - показать содержимое корзины
+let btns = d.querySelectorAll('.product__btn');
+
+// Вешаем события на все кнопки
+
+// btns.forEach(btn => btn.addEventListener('click', (e) => {
+//     let isClass = e.target.classList;
+//     if (isClass.contains('product__btn--plus')) {
+//         console.log(e.target);
+//     } else if (isClass.contains('product__btn--minus')) {
+//         console.log(e.target);
+//     }; 
+// }));
+
+products.addEventListener('click', (e) => {
+    let isClass = e.target.classList;
+    let dataset = e.target.dataset;
+    if (isClass.contains('product__btn--plus')) {
+        addCart(dataset.id, dataset.price);
+    } else if (isClass.contains('product__btn--minus')) {
+        delCart(dataset.id);
+    };
+});
+// ДЛЯ ДЗ
+// querySelector, querySelectorAll
+// document.
+// .onClick (посмотреть события)
+// .addEventListner (чем он лучше .onClick)
+// callback функция
+// выяснить, шо це таке, из-за чего корзина считает коряво
