@@ -3,7 +3,7 @@
 let cart = {
     items: {},
     // добавил объект, в корзине, содержащий все товары, иначе были проблемы с перечислением
-    addCart(id, price) {
+    addCart(id, price, input) {
         // создание нового товара, если его нет в корзине
         if (!this['items'].hasOwnProperty(id)) {
             this['items'][id] = {};
@@ -16,26 +16,35 @@ let cart = {
             this['items'][id]['totalPrice'] = this['items'][id]['count'] * this['items'][id]['price'];
             console.log(this);
         }
+        this.updInputVal(input, this['items'][id]['count']);
     },
-    delCart(id) {
+    delCart(id, input) {
         if (this['items'].hasOwnProperty(id)) {
             if (this['items'][id]['count'] - 1 <= 0) {
+                this.updInputVal(input, 0);
                 delete this['items'][id]
                 console.log(this);
                 return;
             }
             this['items'][id]['count'] -= 1;
             this['items'][id]['totalPrice'] = this['items'][id]['count'] * this['items'][id]['price'];
+            this.updInputVal(input, this['items'][id]['count']);
             console.log(this);
         } else {
             return;
         }
     },
-    delAllCart(){
+    delAllCart(inputs){
         for(let item in this.items){
             delete this.items[item];
         }
-        console.log(this);
+        inputs.forEach(input => {
+            this.updInputVal(input, 0);
+        }); 
+    },
+    
+    updInputVal(tag, count){
+        tag.value = count;
     }
 };
 // преобразование для удобства
@@ -59,16 +68,22 @@ let clearBtn = d.querySelector('.products__btn--clear');
 
 // очистка корзины
 console.log(clearBtn);
-clearBtn.addEventListener('click', function(){
-    cart.delAllCart();
+clearBtn.addEventListener('click', function(e){
+    let targetParent = e.target.parentNode.parentNode;
+    let allInputs = targetParent.querySelectorAll('.product__count');
+    cart.delAllCart(allInputs);
 });
 products.addEventListener('click', (e) => {
     let isClass = e.target.classList;
     let dataset = e.target.dataset;
+    let targetParent = e.target.parentNode;
     if (isClass.contains('product__btn--plus')) {
-        cart.addCart(dataset.id, dataset.price);
+        let currInput = targetParent.querySelector('.product__count');
+        cart.addCart(dataset.id, dataset.price, currInput);
+        
     } else if (isClass.contains('product__btn--minus')) {
-        cart.delCart(dataset.id);
+        let currInput = targetParent.querySelector('.product__count');
+        cart.delCart(dataset.id, currInput);
     };
 });
 // ДЛЯ ДЗ

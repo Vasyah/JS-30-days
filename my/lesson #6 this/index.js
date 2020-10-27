@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 
 let user = {
         // props
@@ -28,8 +28,9 @@ function checkThis() {
     //     console.log(this);
     // }
     // checkThisNew();
-    let arw = () => console.log(this);
-    arw();
+    return this['age'];
+    // let arw = () => console.log(this);
+    // arw();
 }
 
 checkThis();
@@ -59,21 +60,21 @@ console.log(userRichard);
 // 5 функции-конструкторы
 // 6 call, apply, bind
 
-function checkThis(newArg, newArg1){
-    console.log(this[newArg] + ' ' +  this[newArg1]);
-}
+// function checkThis(newArg, newArg1){
+//     console.log(this[newArg] + ' ' +  this[newArg1]);
+// }
 
-checkThis();
-checkThis.call(user, 'age', 'name' );
-checkThis.apply(user, ['age', 'name'] );
+// checkThis();
+// checkThis.call(user, 'age', 'name' );
+// checkThis.apply(user, ['age', 'name'] );
 
 
-function doubleVal(){
-    return this * 2;
-}
+// function doubleVal(){
+//     return this * 2;
+// }
 
-let newVal = doubleVal.bind(2);
-let newVal1 = doubleVal.bind(newVal());
+// let newVal = doubleVal.bind(2);
+// let newVal1 = doubleVal.bind(newVal());
 
-console.log(newVal1());
+// console.log(newVal1());
 
