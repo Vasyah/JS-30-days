@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel serve *.html -d build --no-cache --open"
+    "dev": "parcel serve *.pug -d build --no-cache --open"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "pug": "^3.0.0",
     "sass": "^1.26.10"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.0.0"
   }
 }

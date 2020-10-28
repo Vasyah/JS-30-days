@@ -34,16 +34,16 @@ let cart = {
             return;
         }
     },
-    delAllCart(inputs){
-        for(let item in this.items){
+    delAllCart(inputs) {
+        for (let item in this.items) {
             delete this.items[item];
         }
         inputs.forEach(input => {
             this.updInputVal(input, 0);
-        }); 
+        });
     },
-    
-    updInputVal(tag, count){
+
+    updInputVal(tag, count) {
         tag.value = count;
     }
 };
@@ -53,7 +53,8 @@ let cart = {
 let d = document;
 // элемент, содержащий все продукты
 let products = d.querySelector('.products');
-let clearBtn = d.querySelector('.products__btn--clear');
+let clearBtn = d.querySelector('.clear-btn');
+let btnFirstAdd = d.querySelectorAll('.product__btn-add');
 // Вешаем события на все кнопки
 
 // btns.forEach(btn => btn.addEventListener('click', (e) => {
@@ -65,10 +66,20 @@ let clearBtn = d.querySelector('.products__btn--clear');
 //     }; 
 // }));
 
+let btns = d.querySelectorAll('.product__btns');
 
+btns.forEach(btn => btn.style.visibility = 'hidden');
 // очистка корзины
 console.log(clearBtn);
-clearBtn.addEventListener('click', function(e){
+btnFirstAdd.forEach(btn =>btn.addEventListener('click', function (e) {
+        let parent = e.target.offsetParent;
+        console.log(parent);
+        let productBtn = parent.querySelector('.product_btns');
+        console.log(productBtn);
+        productBtn.style.display = 'flex';
+    }
+));
+clearBtn.addEventListener('click', function (e) {
     let targetParent = e.target.parentNode.parentNode;
     let allInputs = targetParent.querySelectorAll('.product__count');
     cart.delAllCart(allInputs);
@@ -80,7 +91,7 @@ products.addEventListener('click', (e) => {
     if (isClass.contains('product__btn--plus')) {
         let currInput = targetParent.querySelector('.product__count');
         cart.addCart(dataset.id, dataset.price, currInput);
-        
+
     } else if (isClass.contains('product__btn--minus')) {
         let currInput = targetParent.querySelector('.product__count');
         cart.delCart(dataset.id, currInput);

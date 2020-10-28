@@ -117,119 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"scripts/cart_methods.js":[function(require,module,exports) {
-// 'use strict'
-// объект корзины
-var cart = {
-  items: {},
-  // добавил объект, в корзине, содержащий все товары, иначе были проблемы с перечислением
-  addCart: function addCart(id, price, input) {
-    // создание нового товара, если его нет в корзине
-    if (!this['items'].hasOwnProperty(id)) {
-      this['items'][id] = {};
-      this['items'][id]['price'] = +price;
-      this['items'][id]['count'] = 1;
-      this['items'][id]['totalPrice'] = this['items'][id]['count'] * this['items'][id]['price'];
-      console.log(this);
-    } else {
-      this['items'][id]['count'] += 1;
-      this['items'][id]['totalPrice'] = this['items'][id]['count'] * this['items'][id]['price'];
-      console.log(this);
-    }
+})({"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-    this.updInputVal(input, this['items'][id]['count']);
-  },
-  delCart: function delCart(id, input) {
-    if (this['items'].hasOwnProperty(id)) {
-      if (this['items'][id]['count'] - 1 <= 0) {
-        this.updInputVal(input, 0);
-        delete this['items'][id];
-        console.log(this);
-        return;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
       }
-
-      this['items'][id]['count'] -= 1;
-      this['items'][id]['totalPrice'] = this['items'][id]['count'] * this['items'][id]['price'];
-      this.updInputVal(input, this['items'][id]['count']);
-      console.log(this);
-    } else {
-      return;
-    }
-  },
-  delAllCart: function delAllCart(inputs) {
-    var _this = this;
-
-    for (var item in this.items) {
-      delete this.items[item];
     }
 
-    inputs.forEach(function (input) {
-      _this.updInputVal(input, 0);
-    });
-  },
-  updInputVal: function updInputVal(tag, count) {
-    tag.value = count;
-  }
-}; // преобразование для удобства
-// openCart  - показать содержимое корзины
+    cssTimeout = null;
+  }, 50);
+}
 
-var d = document; // элемент, содержащий все продукты
-
-var products = d.querySelector('.products');
-var clearBtn = d.querySelector('.clear-btn');
-var btnFirstAdd = d.querySelectorAll('.product__btn-add'); // Вешаем события на все кнопки
-// btns.forEach(btn => btn.addEventListener('click', (e) => {
-//     let isClass = e.target.classList;
-//     if (isClass.contains('product__btn--plus')) {
-//         console.log(e.target);
-//     } else if (isClass.contains('product__btn--minus')) {
-//         console.log(e.target);
-//     }; 
-// }));
-
-var btns = d.querySelectorAll('.product__btns');
-btns.forEach(function (btn) {
-  return btn.style.visibility = 'hidden';
-}); // очистка корзины
-
-console.log(clearBtn);
-btnFirstAdd.forEach(function (btn) {
-  return btn.addEventListener('click', function (e) {
-    var parent = e.target.offsetParent;
-    console.log(parent);
-    var productBtn = parent.querySelector('.product_btns');
-    console.log(productBtn);
-    productBtn.style.display = 'flex';
-  });
-});
-clearBtn.addEventListener('click', function (e) {
-  var targetParent = e.target.parentNode.parentNode;
-  var allInputs = targetParent.querySelectorAll('.product__count');
-  cart.delAllCart(allInputs);
-});
-products.addEventListener('click', function (e) {
-  var isClass = e.target.classList;
-  var dataset = e.target.dataset;
-  var targetParent = e.target.parentNode;
-
-  if (isClass.contains('product__btn--plus')) {
-    var currInput = targetParent.querySelector('.product__count');
-    cart.addCart(dataset.id, dataset.price, currInput);
-  } else if (isClass.contains('product__btn--minus')) {
-    var _currInput = targetParent.querySelector('.product__count');
-
-    cart.delCart(dataset.id, _currInput);
-  }
-
-  ;
-}); // ДЛЯ ДЗ
-// querySelector, querySelectorAll
-// document.
-// .onClick (посмотреть события)
-// .addEventListner (чем он лучше .onClick)
-// callback функция
-// выяснить, шо це таке, из-за чего корзина считает коряво
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.exports = reloadCSS;
+},{"./bundle-url":"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -257,7 +212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55969" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54090" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -433,5 +388,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/cart_methods.js"], null)
-//# sourceMappingURL=/cart_methods.bafdee33.js.map
+},{}]},{},["C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map

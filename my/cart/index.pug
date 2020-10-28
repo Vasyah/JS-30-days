@@ -1,0 +1,51 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css' integrity='sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2' crossorigin='anonymous')
+  link(rel='stylesheet' href='sass/main.scss')
+  title Document
+.container
+  .products
+    // first item
+    .row
+      .products.mt-4
+        .col
+          .card(style='width: 25rem;')
+            img.card-img-top(src='img/burger-1.jpg' alt='product-1')
+            .card-body
+              h5.card-title Card title
+              p.card-text.product__descr
+                | Some quick example text to build on the card title and make up the bulk of the
+                | card&apos;s content.
+              p.product__pricing Price:
+                span.product__price.font-weight-bold  450
+                  span.product__currency RUB
+              .product__btns
+                button.btn.btn-primary.product__btn.product__btn--minus(data-id='id1' data-price='450') -
+                input.product__count(value='0')
+                button.btn.btn-primary.product__btn.product__btn--plus(data-id='id1' data-price='450') +
+              .product__other
+                button.product__btn-add.btn.btn-primary.w-100(data-id='id1' data-price='450') Add To Cart        
+        .col
+          .card(style='width: 25rem;')
+            img.card-img-top(src='img/burger-1.jpg' alt='product-1')
+            .card-body
+              h5.card-title Card title
+              p.card-text.product__descr
+                | Some quick example text to build on the card title and make up the bulk of the
+                | card&apos;s content.
+              p.product__pricing Price:
+                span.product__price.font-weight-bold  450
+                  span.product__currency RUB
+                span.
+              .product__btns
+                button.btn.btn-primary.product__btn.product__btn--minus(data-id='id1' data-price='450') -
+                input.product__count(value='0')
+                button.btn.btn-primary.product__btn.product__btn--plus(data-id='id1' data-price='450') +
+              .product__other
+                button.product__btn-add.btn.btn-primary.w-100(data-id='id1' data-price='450') Add To Cart
+  
+  a.btn.btn-primary.clear-btn.mt-4(href='#') Clear Cart
+
+
+  script(src='scripts/cart_methods.js')

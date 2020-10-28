@@ -176,8 +176,7 @@ var cart = {
 var d = document; // элемент, содержащий все продукты
 
 var products = d.querySelector('.products');
-var clearBtn = d.querySelector('.clear-btn');
-var btnFirstAdd = d.querySelectorAll('.product__btn-add'); // Вешаем события на все кнопки
+var clearBtn = d.querySelector('.clear-btn'); // Вешаем события на все кнопки
 // btns.forEach(btn => btn.addEventListener('click', (e) => {
 //     let isClass = e.target.classList;
 //     if (isClass.contains('product__btn--plus')) {
@@ -186,22 +185,9 @@ var btnFirstAdd = d.querySelectorAll('.product__btn-add'); // Вешаем со�
 //         console.log(e.target);
 //     }; 
 // }));
-
-var btns = d.querySelectorAll('.product__btns');
-btns.forEach(function (btn) {
-  return btn.style.visibility = 'hidden';
-}); // очистка корзины
+// очистка корзины
 
 console.log(clearBtn);
-btnFirstAdd.forEach(function (btn) {
-  return btn.addEventListener('click', function (e) {
-    var parent = e.target.offsetParent;
-    console.log(parent);
-    var productBtn = parent.querySelector('.product_btns');
-    console.log(productBtn);
-    productBtn.style.display = 'flex';
-  });
-});
 clearBtn.addEventListener('click', function (e) {
   var targetParent = e.target.parentNode.parentNode;
   var allInputs = targetParent.querySelectorAll('.product__count');
@@ -229,7 +215,7 @@ products.addEventListener('click', function (e) {
 // .addEventListner (чем он лучше .onClick)
 // callback функция
 // выяснить, шо це таке, из-за чего корзина считает коряво
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -257,7 +243,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55969" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54090" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -433,5 +419,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/cart_methods.js"], null)
+},{}]},{},["C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/cart_methods.js"], null)
 //# sourceMappingURL=/cart_methods.bafdee33.js.map
