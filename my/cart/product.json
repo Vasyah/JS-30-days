@@ -1,0 +1,14 @@
+{
+    "p1":{
+        "id": "p1",
+        "price": "450",
+        "descr": "This is the product with id:1",
+        "img": "THIS IS IMG",
+    },
+    "p2":{
+        "id": "p2",
+        "price": "900",
+        "descr": "This is the product with id:2",
+        "img": "THIS IS IMG",
+    }
+}
